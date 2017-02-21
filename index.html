@@ -27,20 +27,24 @@
     <title></title>
     <script src="bower_components/requirejs/require.js">
     </script>
-    <script>
-        require(['openmct'], function (openmct) {
-            [
-                'example/imagery',
-                'example/eventGenerator',
-                'example/generator',
-                'platform/features/my-items',
-                'platform/persistence/local'
-            ].forEach(
-                openmct.legacyRegistry.enable.bind(openmct.legacyRegistry)
-            );
-            openmct.start();
-        });
-    </script>
+    
+                <script>
+require(['openmct', 'net-persistence/bundle'], function (openmct) {
+[
+'example/imagery',
+'example/eventGenerator',
+'example/generator',
+'net-persistence',
+'platform/features/my-items',
+// 'platform/persistence/local'
+].forEach(
+openmct.legacyRegistry.enable.bind(openmct.legacyRegistry)
+);
+openmct.start();
+});
+</script>
+    
+   
     <link rel="stylesheet" href="platform/commonUI/general/res/css/startup-base.css">
     <link rel="stylesheet" href="platform/commonUI/general/res/css/openmct.css">
     <link rel="icon" type="image/png" href="platform/commonUI/general/res/images/favicons/favicon-32x32.png" sizes="32x32">
