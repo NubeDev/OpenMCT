@@ -1,3 +1,92 @@
+
+## NubeIO modifcations
+
+In order to test or install the project, you need to set up two components together.
+
+The first step is obviously to **clone the project**. Then, please follow the instructions below to install both components.
+
+# Net-persistence-bundle #
+To install the net-persistence bundle:
+
+*  Copy the `net-persistence-bundle` directory from the repository into the main OpenMCT folder, where there is files like `app.js` and `index.html`.
+*  Edit the `index.html` file.
+*  Find the `<script>` tag with `require(['openmct', ` inside it;
+*  Right before `], function (openmct) {`, add the following:
+```
+#!javascript
+
+, 'net-persistence/bundle'
+```
+*  Right before `].forEach(`, add a new line with this inside it:
+```
+#!javascript
+
+'net-persistence'
+```
+*  In the line just above the `'net-persistence'` line, add a comma at the end of that line.
+*  Please comment the line `'platform/persistence/local'` by prepending it with two slashes.
+*  In the end, it should look like this:
+```
+#!html
+
+    <script>
+        require([
+            'openmct',
+            'net-persistence/bundle'
+        ], function (openmct) {
+            [
+                'example/imagery',
+                'example/eventGenerator',
+                'example/generator',
+                'platform/features/my-items',
+                // 'platform/persistence/local',
+                'net-persistence'
+            ].forEach(
+                openmct.legacyRegistry.enable.bind(openmct.legacyRegistry)
+            );
+            openmct.start();
+        });
+    </script>
+```
+*  Now you are good to go.
+
+# Net-persistence-server #
+Time to make the server installed and running.
+The server has to run on the same machine where OpenMCT resides.
+
+*  Open a terminal (or command line prompt, command prompt, etc.).
+*  Inside the terminal, navigate to the directory where `net-persistence-server` resides.
+*  Type the following command for the first time. It will install dependencies needed for the server to run:
+```
+#!shell
+
+npm install
+```
+*  Then, to run the server, type this command:
+```
+#!shell
+
+npm start
+```
+
+There you go! Now, if you open OpenMCT, you should be up & running while using the net-persistence-server's storage, and not your browser local storage.
+
+
+## Start of openmct read me
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Open MCT [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 Open MCT is a next-generation mission control framework for visualization of data on desktop and mobile devices. It is developed at NASA's Ames Research Center, and is being used by NASA for data analysis of spacecraft missions, as well as planning and operation of experimental rover systems. As a generalizable and open source framework, Open MCT could be used as the basis for building applications for planning, operation, and analysis of any systems producing telemetry data.
