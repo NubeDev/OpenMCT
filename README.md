@@ -1,5 +1,5 @@
 
-## NubeIO modifcations
+# NubeIO modifcations
 
 In order to test or install the project, you need to set up two components together.
 
@@ -72,7 +72,7 @@ npm start
 There you go! Now, if you open OpenMCT, you should be up & running while using the net-persistence-server's storage, and not your browser local storage.
 
 
-## Start of openmct read me
+# Start of openmct read me
 
 
 
